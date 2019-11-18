@@ -1,6 +1,6 @@
 f = open("number.txt","r") # файл с шифрованным номером
-
 sfr = f.read().split('\n')
+f.close()
 
 tab = []
 
