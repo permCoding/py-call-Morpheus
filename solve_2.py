@@ -1,23 +1,25 @@
-f = open("number.txt","r")
-lines = f.readlines()
-f.close()
+from utils import get_lines
 
-digits  = {
-	('**','**','**','**'): '0',
-	(' *','**',' *',' *'): '1',
-	('**',' *','* ','**'): '2',
-	('**',' *',' *','**'): '3',
-	('**','**',' *',' *'): '4',
-	('**','* ',' *','**'): '5',
-	(' *','* ','**','**'): '6',
-	('**',' *','* ','* '): '7',
-	('**','  ','**','**'): '8',
-	('**','**',' *','* '): '9'
-}
+lines = get_lines('number.txt')
 
+# используем список - работает только для цифр
+digits  = [
+	'********',
+	' *** * *',
+	'** ** **',
+	'** * ***',
+	'**** * *',
+	'***  ***',
+	' ** ****',
+	'** ** * ',
+	'**  ****',
+	'**** ** '
+]
+
+# используем генератор списков
 result = ''
-for pos in range(len(lines[0])//2):
-	tmp = [lines[j][pos*2:pos*2+2] for j in range(4)]
-	result += digits[tuple(tmp)]
+for pos in range(0, len(lines[0]), 2):
+	dig = ''.join([line[pos:pos+2] for line in lines])
+	result += str(digits.index(dig))
 
 print(result)
