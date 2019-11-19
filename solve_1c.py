@@ -19,7 +19,8 @@ digits  = {
 # используем генератор списков
 result = ''
 for pos in range(0, len(lines[0]), 2):
-	key = ''.join([line[pos:pos+2] for line in lines])
+	lst = [line[pos:pos+2] for line in lines]
+	key = ''.join(lst)
 	result += digits[key]
 
 print(result)

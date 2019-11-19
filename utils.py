@@ -12,13 +12,11 @@ def print_keys(name_file, step):
 
 
 def get_dict_keys(name_file, step):
-	f = open(name_file, 'r')
-	lines = f.read().split('\n')
+	lines = get_lines(name_file)
 	dct = {}
 	while len(lines)>=step:
 		dct[tuple(lines[1:step])] = lines[0]
 		lines = lines[step:]
-	f.close()
 	return dct
 
 
